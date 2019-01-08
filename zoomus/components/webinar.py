@@ -70,7 +70,7 @@ class WebinarComponentV2(base.BaseComponent):
     def update(self, **kwargs):
         util.require_keys(kwargs, ['meeting_id', 'data'])
         return self.patch_request(
-            "/webinars/{}".format(kwargs.get('meeting_id')),,
+            "/webinars/{}".format(kwargs.get('meeting_id')),
             data=kwargs.get('data'))
 
     def delete(self, **kwargs):
