@@ -41,6 +41,8 @@ class MeetingComponent(base.BaseComponent):
 
 
 class MeetingComponentV2(base.BaseComponent):
+    headers = {"Content-type": "application/json",
+               "Accept": "application/json"}
 
     def list(self, **kwargs):
         util.require_keys(kwargs, 'user_id')
@@ -52,7 +54,8 @@ class MeetingComponentV2(base.BaseComponent):
         util.require_keys(kwargs, ['user_id', 'data'])
         return self.post_request(
             "users/{}/meetings".format(kwargs.get('user_id')),
-            data=kwargs.get('data'))
+            data=kwargs.get('data'),
+            headers=headers)
 
     def retrieve(self, **kwargs):
         util.require_keys(kwargs, 'id')
@@ -64,7 +67,8 @@ class MeetingComponentV2(base.BaseComponent):
         util.require_keys(kwargs, ['id', 'data'])
         return self.patch_request(
             "meetings/{}".format(kwargs.get('id')),
-            data=kwargs.get('data'))
+            data=kwargs.get('data'),
+            headers=headers)
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'id')

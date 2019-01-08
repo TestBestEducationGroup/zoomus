@@ -54,6 +54,8 @@ class WebinarComponent(base.BaseComponent):
 
 class WebinarComponentV2(base.BaseComponent):
     """Component dealing with all webinar related matters"""
+    headers = {"Content-type": "application/json",
+               "Accept": "application/json"}
 
     def list(self, **kwargs):
         util.require_keys(kwargs, 'user_id')

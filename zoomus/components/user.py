@@ -40,17 +40,22 @@ class UserComponent(base.BaseComponent):
 
 
 class UserComponentV2(base.BaseComponent):
+    headers = {"Content-type": "application/json",
+               "Accept": "application/json"}
+
     def list(self, **kwargs):
         return self.get_request("/users", params=kwargs)
 
     def create(self, **kwargs):
-        return self.post_request("/users", data=kwargs)
+        return self.post_request("/users", data=kwargs,
+        headers=headers)
 
     def update(self, **kwargs):
         util.require_keys(kwargs, ['id', 'data'])
         return self.patch_request(
             "/users/{user_id}".format(kwargs.get('id')),
-            data=kwargs.get['data'])
+            data=kwargs.get['data'],
+            headers=headers)
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'id')
