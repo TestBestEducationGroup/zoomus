@@ -49,10 +49,10 @@ class MeetingComponentV2(base.BaseComponent):
             params=kwargs)
 
     def create(self, **kwargs):
-        util.require_keys(kwargs, 'user_id')
+        util.require_keys(kwargs, ['user_id', 'data'])
         return self.post_request(
             "users/{}/meetings".format(kwargs.get('user_id')),
-            params=kwargs)
+            data=kwargs.get('data'))
 
     def retrieve(self, **kwargs):
         util.require_keys(kwargs, 'id')
@@ -61,10 +61,10 @@ class MeetingComponentV2(base.BaseComponent):
             params=kwargs)
 
     def update(self, **kwargs):
-        util.require_keys(kwargs, 'id')
+        util.require_keys(kwargs, ['id', 'data'])
         return self.patch_request(
             "meetings/{}".format(kwargs.get('id')),
-            params=kwargs)
+            data=kwargs.get('data'))
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'id')

@@ -44,13 +44,13 @@ class UserComponentV2(base.BaseComponent):
         return self.get_request("/users", params=kwargs)
 
     def create(self, **kwargs):
-        return self.post_request("/users", params=kwargs)
+        return self.post_request("/users", data=kwargs)
 
     def update(self, **kwargs):
-        util.require_keys(kwargs, 'id')
+        util.require_keys(kwargs, ['id', 'data'])
         return self.patch_request(
             "/users/{user_id}".format(kwargs.get('id')),
-            params=kwargs)
+            data=kwargs.get['data'])
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'id')
