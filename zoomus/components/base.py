@@ -43,7 +43,7 @@ class BaseComponent(util.ApiClient):
             headers = {
                 'Authorization': 'Bearer {}'.format(self.config.get('token')),
                 'Content-type': 'application/json',
-                'Accept': 'application/json'}
+                'Accept': 'application/json'
             }
         return super(BaseComponent, self).post_request(
             endpoint, params=params, data=data, headers=headers,

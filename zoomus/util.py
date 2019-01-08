@@ -98,7 +98,7 @@ class ApiClient(object):
             headers = {
                 'Authorization': 'Bearer {}'.format(self.config.get('token')),
                 'Content-type': 'application/json',
-                'Accept': 'application/json'}
+                'Accept': 'application/json'
             }
         return requests.post(
             self.url_for(endpoint),
@@ -126,7 +126,7 @@ class ApiClient(object):
             headers = {
                 'Authorization': 'Bearer {}'.format(self.config.get('token')),
                 'Content-type': 'application/json',
-                'Accept': 'application/json'}
+                'Accept': 'application/json'
             }
         return requests.patch(
             self.url_for(endpoint),
