@@ -64,7 +64,7 @@ class WebinarComponentV2(base.BaseComponent):
     def create(self, **kwargs):
         util.require_keys(kwargs, ['user_id', 'data'])
         return self.post_request(
-            "/users/{}/webinars".format(kwargs.get('user_id')),,
+            "/users/{}/webinars".format(kwargs.get('user_id')),
             data=kwargs.get('data'))
 
     def update(self, **kwargs):
