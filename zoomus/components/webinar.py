@@ -54,8 +54,6 @@ class WebinarComponent(base.BaseComponent):
 
 class WebinarComponentV2(base.BaseComponent):
     """Component dealing with all webinar related matters"""
-    headers = {"Content-type": "application/json",
-               "Accept": "application/json"}
 
     def list(self, **kwargs):
         util.require_keys(kwargs, 'user_id')
@@ -67,15 +65,13 @@ class WebinarComponentV2(base.BaseComponent):
         util.require_keys(kwargs, ['user_id', 'data'])
         return self.post_request(
             "/users/{}/webinars".format(kwargs.get('user_id')),
-            data=kwargs.get('data'),
-            headers=self.headers)
+            data=kwargs.get('data'))
 
     def update(self, **kwargs):
         util.require_keys(kwargs, ['meeting_id', 'data'])
         return self.patch_request(
             "/webinars/{}".format(kwargs.get('meeting_id')),
-            data=kwargs.get('data'),
-            headers=self.headers)
+            data=kwargs.get('data'))
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'meeting_id')

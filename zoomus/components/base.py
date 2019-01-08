@@ -40,7 +40,11 @@ class BaseComponent(util.ApiClient):
         if self.config['version']  == 1:
             params.update(self.config)
         if headers is None and self.config.get('version') == 2:
-            headers = {'Authorization': 'Bearer {}'.format(self.config.get('token'))}
+            headers = {
+                'Authorization': 'Bearer {}'.format(self.config.get('token')),
+                'Content-type': 'application/json',
+                'Accept': 'application/json'}
+            }
         return super(BaseComponent, self).post_request(
             endpoint, params=params, data=data, headers=headers,
             cookies=cookies)
