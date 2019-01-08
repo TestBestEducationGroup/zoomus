@@ -55,7 +55,7 @@ class MeetingComponentV2(base.BaseComponent):
         return self.post_request(
             "users/{}/meetings".format(kwargs.get('user_id')),
             data=kwargs.get('data'),
-            headers=headers)
+            headers=self.headers)
 
     def retrieve(self, **kwargs):
         util.require_keys(kwargs, 'id')
@@ -68,7 +68,7 @@ class MeetingComponentV2(base.BaseComponent):
         return self.patch_request(
             "meetings/{}".format(kwargs.get('id')),
             data=kwargs.get('data'),
-            headers=headers)
+            headers=self.headers)
 
     def delete(self, **kwargs):
         util.require_keys(kwargs, 'id')
