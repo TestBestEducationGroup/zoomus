@@ -7,4 +7,5 @@ from . import (
     recording,
     report,
     user,
-    webinar)
+    webinar,
+    group)
