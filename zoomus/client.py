@@ -42,6 +42,7 @@ class ZoomClient(util.ApiClient):
         class_recording_component = components.recording.RecordingComponent if version == 1 else components.recording.RecordingComponentV2
         class_webinar_component = components.webinar.WebinarComponent if version == 1 else components.webinar.WebinarComponentV2
         class_report_component = components.report.ReportComponent if version == 1 else components.report.ReportComponentV2
+        class_group_component = components.report.GroupComponent if version == 1 else components.report.GroupComponentV2
 
         # Register all of the components
         self.components = {
@@ -54,6 +55,8 @@ class ZoomClient(util.ApiClient):
             'webinar': class_webinar_component(
                 base_uri=BASE_URI, config=self.config),
             'recording': class_recording_component(
+                base_uri=BASE_URI, config=self.config),
+            'group': class_group_component(
                 base_uri=BASE_URI, config=self.config)
         }
 
@@ -114,3 +117,8 @@ class ZoomClient(util.ApiClient):
     def recording(self):
         """Get the recording component"""
         return self.components.get('recording')
+
+    @property
+    def group(self):
+        """Get the group component"""
+        return self.components.get('group')
