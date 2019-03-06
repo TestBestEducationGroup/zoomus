@@ -68,17 +68,17 @@ class GroupComponentV2(base.BaseComponent):
     def member_add(self, **kwargs):
         util.require_keys(kwargs, ['id', 'members'])
         return self.post_request(
-            "/group/{}/members".format(kwargs.get('id')),
+            "/groups/{}/members".format(kwargs.get('id')),
              params=kwargs)
 
     def member_delete(self, **kwargs):
         util.require_keys(kwargs, ['id', 'members'])
         return self.delete_request(
-            "/group/{}/members".format(kwargs.get('id')),
+            "/groups/{}/members".format(kwargs.get('id')),
              params=kwargs)
 
     def member_list(self, **kwargs):
         util.require_keys(kwargs, 'id')
         return self.post_request(
-            "/group/{}/members".format(kwargs.get('id')),
+            "/groups/{}/members".format(kwargs.get('id')),
              params=kwargs)
