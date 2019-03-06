@@ -42,7 +42,7 @@ class ZoomClient(util.ApiClient):
         class_recording_component = components.recording.RecordingComponent if version == 1 else components.recording.RecordingComponentV2
         class_webinar_component = components.webinar.WebinarComponent if version == 1 else components.webinar.WebinarComponentV2
         class_report_component = components.report.ReportComponent if version == 1 else components.report.ReportComponentV2
-        class_group_component = components.report.GroupComponent if version == 1 else components.report.GroupComponentV2
+        class_group_component = components.group.GroupComponent if version == 1 else components.group.GroupComponentV2
 
         # Register all of the components
         self.components = {
