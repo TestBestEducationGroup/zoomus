@@ -69,7 +69,9 @@ class GroupComponentV2(base.BaseComponent):
         util.require_keys(kwargs, ['id', 'members'])
         return self.post_request(
             "/groups/{}/members".format(kwargs.get('id')),
-             params=kwargs)
+             data={
+                 "members": kwargs.get('members')
+             })
 
     def member_delete(self, **kwargs):
         util.require_keys(kwargs, ['id', 'members'])
@@ -78,7 +80,10 @@ class GroupComponentV2(base.BaseComponent):
              params=kwargs)
 
     def member_list(self, **kwargs):
-        util.require_keys(kwargs, 'id')
+        util.require_keys(kwargs, ['id', 'page_number', 'page_size'])
         return self.post_request(
             "/groups/{}/members".format(kwargs.get('id')),
-             params=kwargs)
+             data={
+                 "page_size": kwargs.get('page_size'),
+                 "page_number": kwargs.get('page_number')
+             })
